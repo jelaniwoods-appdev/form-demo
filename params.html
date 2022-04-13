@@ -59,7 +59,7 @@
       var query_string = formatQueryString(inputs);
       var full_url = `${action}${query_string}`;
       var rails_params = formatRailsParams(inputs);
-      var content = `This form submitted to:<br><code>${full_url}</code><br>The query string is:<br><code>${query_string}</code>.`
+      var content = `This form submitted to:<br><code>${full_url}</code><br>The query string is:<br><code>${query_string}</code>.<br>The <code>params</code> Hash looks like this:<br><code>${rails_params}</code>`
       updateResult(content);
     });
 
