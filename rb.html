@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruby Cheatsheet</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet"
+    href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+
+<body style="margin-top: 20px;">
+  <style>
+/* 
+    .code-block {
+      display: block;
+      white-space: pre-wrap;
+    } */
+
+  </style>
+
+<div class="language-ruby container">
+  <table class="language-ruby table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col" colspan="2">Keyword</th>
+        <th scope="col" colspan="5">Description</th>
+        <th scope="col" colspan="5">Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="2">
+          <code>true</code>, <code>false</code>
+        </td>
+        <td colspan="5">
+          Conditional program execution: program starts with <code>if</code> branch,
+          tries the <code>elsif</code> branches,
+          and finishes with <code>else</code> branch (until one branch evaluates to <code>else</code>)
+        <td colspan="5">
+<pre><code class="language-ruby code-block">
+ruby_is_the_best = true
+squares_have_three_sides = false          
+</code></pre>
+        </td>
+      </tr>
+
+      <tr>
+        <td scope="col" colspan="2">
+          <code>if</code>, <code>elsif</code>, <code>else</code>
+        </td>
+        <td scope="col" colspan="5">
+          An if statement evaluates an expression, which returns either <code>true</code> or <code>false</code>.
+          When true, Ruby executes the "code block" that follows. When the expression is <code>false</code>, Ruby returns <code>nil</code>.
+  
+          In this example, the string <code>"Your condition was true!"</code> will print because the condition <code>number == 10</code> is <code>true</code>.
+    
+        </td>
+        <td scope="col" colspan="5">
+          <pre><code class="language-ruby code-block">
+number = 10
+if number == 10
+  puts "Your condition was true!"
+end
+          </code></pre>
+        </td>
+      </tr>
+
+      <tr>
+        <td scope="col" colspan="2">
+          <code>nil</code>
+        </td>
+        <td scope="col" colspan="5">
+          <code>nil</code> is a special Ruby object used to represent an "empty" or "default" value. Many methods can return <code>nil</code> as a result.
+          This happens when you ask for a value but that value is not available:
+          <ul>
+            <li>
+              Array index out of bounds
+            </li>
+            <li>
+              Hash key or value doesn't exist
+            </li>
+            <li>
+              Undefined <strong>instance variables</strong>
+            </li>
+            <li>
+              Record not found in our database
+            </li>
+          </ul>
+        </td>
+        <td scope="col" colspan="5">
+          <pre><code class="language-ruby code-block">
+letters = ["a", "b", "c"]
+letters[5]
+# => nil
+          </code></pre>
+        </td>
+      </tr>
+
+      <tr>
+        <td scope="col" colspan="2">
+          <code>||</code>
+        </td>
+        <td scope="col" colspan="5">
+          The <code>||</code> (pronounced "or") operator is a logical operator which returns <code>true</code>
+          if either of the expressions on left-hand side or right-hand side evaluate to <code>true</code>.
+        </td>
+        <td scope="col" colspan="5">
+          <pre><code class="language-ruby code-block">
+grade1 = 50
+grade2 = 30
+grade3 = 80
+
+if grade1 > grade2 || grade1 > grade3
+  p "Grade 1 is not the lowest score!"
+end
+          </code></pre>
+        </td>
+      </tr>
+
+      <tr>
+        <td scope="col" colspan="2">
+            <code>&&</code>
+          </td>
+          <td scope="col" colspan="5">            
+            The <code>&&</code> operator (pronounced "and") is a logical operator in which evaluates to <code>true</code>
+            only if both expressions on either side of <code>&&</code> evaluates to <code>true</code>.
+          </td>
+          <td scope="col" colspan="5">
+            <pre><code class="language-ruby code-block">
+if score1 > score2 && score1 > score3
+  print "Score 1 is the greatest in value."
+else
+  print "Score 1 is not the greatest in value."
+end
+            </code></pre>
+        </td>
+      </tr>
+
+      <tr>
+        <td scope="col" colspan="2">
+            <code>==</code>
+        </td>
+        <td scope="col" colspan="5">
+            A logical operator in which compares the expressions on both sides and returns <code>true</code> is both values are the same.
+            Otherwise, it returns <code>false</code>.
+        </td>
+        <td scope="col" colspan="5">
+          <pre><code class="language-ruby code-block">
+age = 30
+if age == 15 * 2
+  p "age is the same as 15 * 2"
+end
+          </code></pre>
+        </td>
+      </tr>
+
+      <tr>
+        <td scope="col" colspan="2">
+          <code>def</code>
+        </td>
+        <td scope="col" colspan="5">          
+          Defines a method. A method is a block of code that can easily be run by invoking the method name.
+          A <code>def</code> requires a method name and an <code>end</code> to denote where the method ends.
+          <strong>All methods must be called on some object</strong>.
+        </td>
+          <td scope="col" colspan="5">
+            <pre><code class="language-ruby code-block">
+class Greeting
+  def say_hello
+    p "Hello!"
+  end
+end
+
+g = Greeting.new
+g.say_hello
+# => "Hello!"
+            </code></pre>
+        </td>
+      </tr>
+
+      <tr>
+        <td scope="col" colspan="2">
+          <code>return</code>
+        </td>
+        <td scope="col" colspan="5">
+          A keyword that allows the developer to explicitly 
+          stop the execution flow of a method and return a specific value.
+          <strong>Note:</strong> values that are returned are not printed by
+        </td>
+        <td scope="col" colspan="5">   
+          <pre><code class="language-ruby code-block">
+class Addition
+  def add_two(number)
+    return number + 2
+  end
+end
+
+add = Addition.new
+result = add.add_two(3)
+# => 5
+          </code></pre>
+        </td>
+      </tr>
+
+      <tr>
+        <td scope="col" colspan="2">
+          <code>class</code>
+        </td>
+        <td scope="col" colspan="5">
+          A <code>class</code> is the blueprint from which individual objects are created.
+          Classes allow us to write methods and attributes which can be reused by many objects.
+        </td>
+        <td scope="col" colspan="5">
+          <pre><code class="language-ruby code-block">
+class Fruit
+  attr_attribute(:name)
+  attr_attribute(:color)
+end
+
+strawberry = Fruit.new
+strawberry.name = "Strawberry"
+strawberry.color = "red"
+            </code></pre>
+        </td>
+      </tr>
+
+      <tr>
+        <td scope="col" colspan="2">
+
+        </td>
+        <td scope="col" colspan="5">
+
+        </td>
+          <td scope="col" colspan="5">
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  
+</body>
+
+</html>
